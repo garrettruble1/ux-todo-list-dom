@@ -19,14 +19,32 @@ let todos = [
 ];
 
 function renderTodoApp() {
-    let app = document.querySelector("#app")
-    let h1 = document.createElement("h1")
+    let app = document.querySelector("#app");
+    let h1 = document.createElement("h1");
     // your code here
 
-    h1.innerText = "Todo List"
+    let ul = document.createElement("ul");
+    ul.style = "list-style-type: none";
 
-    app.appendChild(h1)
+    for (let i = 0; i < todos.length; i++) {
+
+        let li = document.createElement("li");
+
+        let input = `<input type="checkbox">${todos[i].description}</input>`;
+            if (todos[i].completed === true) {
+                input = `<input type="checkbox" checked>${todos[i].description}</input>`;
+            }
+
+        ul.appendChild(li);
+
+        li.innerHTML += input;
+    }
+
+    h1.innerText = "Todo List";
+
+    app.appendChild(h1);
     // and maybe some here
+    app.appendChild(ul);
 }
 
-renderTodoApp()
+renderTodoApp();
