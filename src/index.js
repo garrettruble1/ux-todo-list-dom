@@ -43,8 +43,26 @@ function renderTodoApp() {
     h1.innerText = "Todo List";
 
     app.appendChild(h1);
-    // and maybe some here
+
     app.appendChild(ul);
+
+    let form = document.querySelector("#form");
+    let button = document.querySelector("#submit-button");
+
+    form.onsubmit = (e) => {
+        e.preventDefault();
+        let li = document.createElement("li");
+        let submission = document.querySelector("#form-input").value;
+        let input = `<input type="checkbox">${submission}</input>`;
+
+        li.innerHTML += input;
+        ul.appendChild(li);
+
+        document.querySelector("#form-input").value = "";
+    }
+
+
+
 }
 
 renderTodoApp();
